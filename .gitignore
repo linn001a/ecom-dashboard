@@ -1,0 +1,12 @@
+# 保护敏感经营数据 —— 只发布 reports/ 下的 HTML 看板
+budget/
+data/
+scripts/
+agents/
+prompts/
+workflows/
+TEAM_SPEC.md
+*.xlsx
+*.csv
+__pycache__/
+.DS_Store
