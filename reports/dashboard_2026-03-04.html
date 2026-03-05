@@ -233,8 +233,33 @@ canvas { max-height:240px; }
   </div>
 </div>
 
+<div class="grid grid-2">
+  <div class="card">
+    <h3>📊 3月 vs 1月 天对天日 GMV</h3>
+    <canvas id="mvmDailyChart"></canvas>
+  </div>
+  <div class="card">
+    <h3>📊 3月 vs 1月 天对天累计 GMV</h3>
+    <div style="display:flex;gap:16px;margin-bottom:12px">
+      <div style="flex:1;text-align:center;padding:10px;background:#0f172a;border-radius:8px">
+        <div style="color:#94a3b8;font-size:12px">3月累计</div>
+        <div style="font-size:20px;font-weight:700;color:#f8fafc">104.0 万</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:10px;background:#0f172a;border-radius:8px">
+        <div style="color:#94a3b8;font-size:12px">1月累计</div>
+        <div style="font-size:20px;font-weight:700;color:#f8fafc">40.7 万</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:10px;background:#0f172a;border-radius:8px">
+        <div style="color:#94a3b8;font-size:12px">差异</div>
+        <div style="font-size:20px;font-weight:700;color:#22c55e">+155.5%</div>
+      </div>
+    </div>
+    <canvas id="mvmCumChart"></canvas>
+  </div>
+</div>
+
 <div class="footer">
-  生成时间：2026-03-05 17:49:06 · 私域电商管理团队
+  生成时间：2026-03-05 17:53:49 · 私域电商管理团队
 </div>
 
 <script>
@@ -284,6 +309,31 @@ new Chart(document.getElementById('speedChart'), {
     datasets: [
       { label: '日 GMV (万)', data: [31.85, 33.17, 31.54, 21.89, 21.89, 31.0, 29.21], backgroundColor:'rgba(59,130,246,0.7)', borderColor:'#3b82f6', borderWidth:1, borderRadius:4 },
       { label: '近7天均值', data: [28.65, 28.65, 28.65, 28.65, 28.65, 28.65, 28.65], type:'line', borderColor:'#f97316', borderDash:[5,5], pointRadius:0, borderWidth:2 }
+    ]
+  },
+  options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
+});
+
+
+new Chart(document.getElementById('mvmDailyChart'), {
+  type: 'line',
+  data: {
+    labels: ["第1天", "第2天", "第3天", "第4天"],
+    datasets: [
+      { label: '3月日 GMV (万)', data: [21.89, 21.89, 31.0, 29.21], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,0.1)', fill:true, tension:0.3 },
+      { label: '1月日 GMV (万)', data: [8.68, 8.68, 8.68, 14.67], borderColor:'#94a3b8', backgroundColor:'rgba(148,163,184,0.1)', fill:true, tension:0.3, borderDash:[4,4] }
+    ]
+  },
+  options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
+});
+
+new Chart(document.getElementById('mvmCumChart'), {
+  type: 'line',
+  data: {
+    labels: ["第1天", "第2天", "第3天", "第4天"],
+    datasets: [
+      { label: '3月累计 (万)', data: [21.89, 43.78, 74.78, 103.99], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,0.15)', fill:true, tension:0.3, borderWidth:3 },
+      { label: '1月累计 (万)', data: [8.68, 17.35, 26.03, 40.69], borderColor:'#94a3b8', backgroundColor:'rgba(148,163,184,0.1)', fill:true, tension:0.3, borderDash:[4,4] }
     ]
   },
   options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
